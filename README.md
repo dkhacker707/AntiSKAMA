@@ -19,7 +19,7 @@ The ultimate weapon against online scams featuring:
 ### Step-by-Step Setup
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/AntiSKAMA.git
+git clone https://github.com/dkhacker707/AntiSKAMA.git
 cd AntiSKAMA
 
 # Install dependencies
