@@ -18,6 +18,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from PIL import Image
 import io
+import argparse
 
 # Configuration
 KEYWORD_FILE = "skama_words.txt"
@@ -191,13 +192,24 @@ def show_banner():
     print("=== SKAMAAAA TERMINATION PROTOCOL ACTIVATED ===")
     print("=== MODE: FULL SPECTRUM ANALYSIS ===\n")
 
-def main():
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description="Scan a URL for potential scams")
+    parser.add_argument('--url', help='Target URL to scan')
+    return parser.parse_args()
+
+
+def main() -> None:
+    args = parse_args()
+
     show_banner()
     hunter = SkamaHunter()
-    
-    # User input
-    print("ENTER TARGET URL BELOW (OR PRESS CTRL+C TO ABORT)")
-    scan_url = input("\n[?] TARGET URL: ").strip()
+
+    if args.url:
+        scan_url = args.url.strip()
+    else:
+        print("ENTER TARGET URL BELOW (OR PRESS CTRL+C TO ABORT)")
+        scan_url = input("\n[?] TARGET URL: ").strip()
+
     if not scan_url.startswith(('http://', 'https://')):
         scan_url = 'http://' + scan_url
 
@@ -291,6 +303,6 @@ def main():
 if __name__ == "__main__":
     print("\n[!] WARNING: THIS TOOL REQUIRES ADDITIONAL WEAPONS:")
     print("[!] Install required packages with:")
-    print("pip install selenium pillow python-whois")
+    print("pip install -r requirements.txt")
     print("[!] Also download ChromeDriver for screenshot functionality")
     main()

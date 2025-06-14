@@ -1,0 +1,6 @@
+# Ignore evidence and logs
+skama_evidence/
+*.html
+antiskama_log.txt
+__pycache__/
+

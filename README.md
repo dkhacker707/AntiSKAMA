@@ -24,3 +24,13 @@ cd AntiSKAMA
 
 # Install dependencies
 pip install -r requirements.txt
+```
+
+## Usage
+
+Run the scanner and provide the target URL either as a command line argument or interactively:
+
+```bash
+python AntiSKAMA.py --url https://example.com
+```
+
